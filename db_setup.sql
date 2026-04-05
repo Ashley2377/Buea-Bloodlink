@@ -1,0 +1,82 @@
+-- MySQL setup for Buea BloodLink
+CREATE DATABASE IF NOT EXISTS buea_bloodlink CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE buea_bloodlink;
+
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255),
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  role ENUM('admin','donor','hospital') NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS donors (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  blood_group VARCHAR(5) NOT NULL,
+  age INT NOT NULL,
+  location VARCHAR(255) NOT NULL,
+  phone VARCHAR(50) NOT NULL,
+  donation_history TEXT,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS hospitals (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  location VARCHAR(255) NOT NULL,
+  phone VARCHAR(50) NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS blood_stock (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  hospital_id INT NOT NULL,
+  blood_group VARCHAR(5) NOT NULL,
+  quantity INT NOT NULL DEFAULT 0,
+  FOREIGN KEY (hospital_id) REFERENCES hospitals(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS requests (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT,
+  blood_group VARCHAR(5) NOT NULL,
+  location VARCHAR(255) NOT NULL,
+  quantity INT NOT NULL DEFAULT 1,
+  status ENUM('pending','approved','rejected') DEFAULT 'pending',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+);
+
+CREATE TABLE IF NOT EXISTS donations (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  donor_id INT NOT NULL,
+  hospital_id INT NOT NULL,
+  blood_group VARCHAR(5) NOT NULL,
+  quantity INT NOT NULL DEFAULT 1,
+  donation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (donor_id) REFERENCES donors(id) ON DELETE CASCADE,
+  FOREIGN KEY (hospital_id) REFERENCES hospitals(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS notifications (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  message TEXT NOT NULL,
+  type VARCHAR(50) DEFAULT 'info',
+  is_read BOOLEAN DEFAULT FALSE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS blood_stock_history (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  hospital_id INT NOT NULL,
+  blood_group VARCHAR(5) NOT NULL,
+  quantity_change INT NOT NULL,
+  reason VARCHAR(100) NOT NULL,
+  change_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (hospital_id) REFERENCES hospitals(id) ON DELETE CASCADE
+);

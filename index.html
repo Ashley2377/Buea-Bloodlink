@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buea BloodLink</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <header>
+        <nav class="top-nav">
+            <div class="logo"><img src="2-removebg-preview.png" alt="Logo" style="width: 50px; height: 50px; margin-right: 10px;">Buea BloodLink</div>
+            <ul class="nav-items">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#howitworks">How It Works</a></li>
+                <li><a href="request.php">Request Blood</a></li>
+                <li><a href="login.php" id="nav-login">Login</a></li>
+                <li><a href="register.php" id="nav-register">Register</a></li>
+                <li><a href="search_donors.php">Search Donors</a></li>
+                <li><a href="donor_dashboard.php">Dashboard</a></li>
+                <li>
+                    <div class="search-container">
+                        <input type="text" placeholder="Search blood group, location" aria-label="Search blood group or location" />
+                        <button class="search-btn" onclick="window.location.href='register.php'" title="Search">
+                            🔍
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Welcome to Buea BloodLink, Donate Blood, Save Lifes in Buea.</h1>
+        <p>Buea Blood link connects voluntary blood donors with hospitals in need, making it faster and easier to respond to emergencies and save lives. </p>
+        <div style="display: flex; gap: 10px;">
+            <button class="btn" onclick="window.location.href='register.php'">Find Blood Now</button>
+            <button class="btn" onclick="window.location.href='register.php'">Become a Donor</button>
+        </div>
+    </section>
+
+    <section id="howitworks">
+        <h2>How It Works</h2>   
+        <ol>
+            <li>Register as a donor or hospital.</li>
+            <li>Create your profile with your blood type and location or hospital location and bloodtype and unit needed</li>
+            <li>Search for available blood types or post a request.</li>
+            <li>Request blood or book a donation appointment.</li>
+            <li>Respond to request and help save lives.</li>
+        </ol>
+    </section>
+
+    <section id="search">
+        <h2>Search for Blood</h2>
+        <form id="searchForm" style="display: flex; gap: 10px; align-items: center; justify-content: center; flex-wrap: wrap;">
+            <select id="searchBloodGroup" style="padding: 8px; border-radius: 20px; border: 1px solid #ccc;" placeholder="Blood Group">
+                <option value="">Blood Group</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+            <input type="text" id="searchLocation" style="padding: 8px; border-radius: 20px; border: 1px solid #ccc;" placeholder="Location">
+            <button type="button" class="btn" style="border-radius: 20px;" onclick="window.location.href='register.php'">Request Blood</button>
+        </form>
+    </section>
+
+    <footer id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: support@bueabloodlink.com</p>
+        <p>Phone: +237 683 586 672</p>
+        <marquee>@2026 Buea-BloodLink, All Rights Reserved, Connecting donors saving lives</marquee>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/utils.js"></script>
+</body>
+</html>

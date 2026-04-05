@@ -1,0 +1,128 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: #ff4d4d;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 100px 0 0 0;
+    box-sizing: border-box;
+    scroll-padding-top: 90px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.hero {
+    padding-top: 40px;
+}
+
+.top-nav {
+    width: min(1200px, 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-items li {
+    display: inline-flex;
+}
+
+.nav-items a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 10px;
+}
+
+.nav-items a:hover {
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 5px;
+}
+
+header button {
+    background-color: white;
+    color: #ff4d4d;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-box select,
+.search-box input,
+.search-box button {
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#main-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.hidden {
+    display: none;
+}
+
+footer {
+    background-color: #ff4d4d;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}

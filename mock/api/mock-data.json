@@ -1,0 +1,51 @@
+{
+  "bloodRequests": [
+    {
+      "id": 1,
+      "bloodType": "A+",
+      "unitsRequested": 5,
+      "location": "Buea General Hospital",
+      "requestDate": "2023-10-01",
+      "status": "Pending"
+    },
+    {
+      "id": 2,
+      "bloodType": "O-",
+      "unitsRequested": 3,
+      "location": "Buea Regional Hospital",
+      "requestDate": "2023-10-02",
+      "status": "Fulfilled"
+    },
+    {
+      "id": 3,
+      "bloodType": "B+",
+      "unitsRequested": 2,
+      "location": "Buea Health Center",
+      "requestDate": "2023-10-03",
+      "status": "Pending"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "phone": "123-456-7890",
+      "bloodType": "A+",
+      "donationHistory": [
+        {
+          "date": "2023-09-15",
+          "location": "Buea Blood Donation Drive"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "phone": "098-765-4321",
+      "bloodType": "O-",
+      "donationHistory": []
+    }
+  ]
+}
