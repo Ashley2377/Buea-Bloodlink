@@ -1,4 +1,18 @@
 <?php
+
+// Enable error reporting for debugging (disable in production)
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+ini_set("log_errors", 1);
+
+// echo json_encode([
+//     "name" => "Ashley", 
+//     "age" => 25, 
+//     "signin" => true, 
+//     "role" => "donor"
+// ]);
+// exit;
+
 session_start();
 require_once 'config.php';
 
@@ -14,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!$role || !$email || strlen($password) < 6) {
         $_SESSION['error'] = 'Please fill required fields with valid data.';
-        header('Location: /buea-bloodlink-frontend/register.php');
+        header('Location: ../register.php');
         exit;
     }
 
@@ -26,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute([$email]);
     if ($stmt->fetch()) {
         $_SESSION['error'] = 'Email already registered.';
-        header('Location: /buea-bloodlink-frontend/register.php');
+        header('Location: ../register.php');
         exit;
     }
 
@@ -58,12 +72,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['user_name'] = $name;
 
     if ($role === 'donor') {
-        header('Location: /buea-bloodlink-frontend/donor_dashboard.php');
+        header('Location: ../donor_dashboard.php');
     } elseif ($role === 'hospital') {
-        header('Location: /buea-bloodlink-frontend/bloodbank_dashboard.php');
+        header('Location: ../bloodbank_dashboard.php');
     }
     exit;
 }
 
-header('Location: /buea-bloodlink-frontend/register.php');
+header('Location: ../register.php');
 exit;

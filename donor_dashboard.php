@@ -1,4 +1,9 @@
 <?php
+// Enable error reporting for debugging (disable in production)
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+ini_set("log_errors", 1);
+
 session_start();
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'donor') {
     header('Location: /buea-bloodlink-frontend/login.php');
@@ -9,7 +14,7 @@ require_once 'php/config.php';
 $userId = $_SESSION['user_id'];
 
 // Get donor profile
-$profile = $pdo->prepare('SELECT d.*, u.email FROM donors d JOIN users u ON u.id = d.user_id WHERE d.user_id = ? LIMIT 1');
+$profile = $pdo->prepare('SELECT d.*, u.email, u.name FROM donors d JOIN users u ON u.id = d.user_id WHERE d.user_id = ? LIMIT 1');
 $profile->execute([$userId]);
 $donor = $profile->fetch(PDO::FETCH_ASSOC);
 

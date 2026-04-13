@@ -1,11 +1,19 @@
+<?php
+// Enable error reporting for debugging (disable in production)
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+ini_set("log_errors", 1);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Buea BloodLink</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/style.css?v=2">
+    <link rel="stylesheet" href="css/components.css?v=2">
     <script defer src="js/validation.js"></script>
 </head>
 <body>
@@ -54,7 +62,7 @@
                     <input type="text" id="location" name="location" placeholder="City/Region">
 
                     <label for="phone">Phone <span class="required">*</span></label>
-                    <input type="tel" id="phone" name="phone" placeholder="Phone number">
+                    <input type="tel" id="phone" name="phone" placeholder="c" />
                 </div>
 
                 <div id="hospitalFields" class="role-fields hidden">
@@ -65,7 +73,7 @@
                     <input type="text" id="hospital_location" name="hospital_location" placeholder="City/Region">
 
                     <label for="hospital_phone">Phone <span class="required">*</span></label>
-                    <input type="tel" id="hospital_phone" name="hospital_phone" placeholder="Phone number">
+                    <input type="tel" id="hospital_phone" name="hospital_phone" placeholder="6XX-XXX-XXX (eg 659-453-657)">
                 </div>
 
                 <label for="email">Email <span class="required">*</span></label>

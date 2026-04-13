@@ -1,5 +1,3 @@
-/* components.css */
-
 /* Button Styles */
 .button {
     padding: 10px 15px;
@@ -17,6 +15,23 @@
 
 .button-primary:hover {
     background-color: #e84118;
+}
+
+.btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 16px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn-danger {
+    background-color: #c11;
 }
 
 /* Card Styles */
@@ -37,94 +52,7 @@
     margin: 10px 0;
 }
 
-/* Header Styles */
-.header {
-    background-color: #2f3542;
-    color: white;
-    padding: 15px;
-    text-align: center;
-}
-
-/* Footer Styles */
-.footer {
-    background-color: #2f3542;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .card {
-        margin: 10px;
-    }
-
-    .button {
-        width: 100%;
-    }
-}
-
-.page-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.small-card {
-    background: #fafafa;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 15px;
-    margin: 10px 0;
-}
-
-.profile-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 16px;
-    margin-bottom: 20px;
-}
-
-.card-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 14px;
-}
-
-.form-card input,
-.form-card select,
-.form-card button {
-    width: 100%;
-    margin: 8px 0;
-    padding: 10px;
-}
-
-.form-card label {
-    font-weight: 600;
-}
-
-.btn {
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    padding: 10px 16px;
-    cursor: pointer;
-}
-
-.btn:hover {
-    opacity: 0.9;
-}
-
-.btn-danger {
-    background-color: #c11;
-}
-
-.hidden { display: none; }
-
+/* Search Container Styles */
 .search-container {
     display: flex;
     align-items: center;
@@ -164,4 +92,17 @@
     opacity: 0.9;
 }
 
-.required { color: #d00; }
+.required {
+    color: #d00;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .card {
+        margin: 10px;
+    }
+
+    .button {
+        width: 100%;
+    }
+}

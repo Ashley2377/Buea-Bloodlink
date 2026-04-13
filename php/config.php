@@ -5,8 +5,8 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 $db_host = 'localhost';
 $db_name = 'buea_bloodlink';
-$db_user = 'root';
-$db_pass = '';
+$db_user = 'demo';
+$db_pass = 'demo';
 
 try {
     $pdo = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8mb4", $db_user, $db_pass);
@@ -24,7 +24,7 @@ $ddl = [
     "CREATE TABLE IF NOT EXISTS requests (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, blood_group VARCHAR(5) NOT NULL, location VARCHAR(255) NOT NULL, status ENUM('pending','approved','rejected') DEFAULT 'pending', created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL)",
     "CREATE TABLE IF NOT EXISTS donations (id INT AUTO_INCREMENT PRIMARY KEY, donor_id INT NOT NULL, hospital_id INT NOT NULL, blood_group VARCHAR(5) NOT NULL, quantity INT NOT NULL DEFAULT 1, donation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (donor_id) REFERENCES donors(id) ON DELETE CASCADE, FOREIGN KEY (hospital_id) REFERENCES hospitals(id) ON DELETE CASCADE)",
     "CREATE TABLE IF NOT EXISTS notifications (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT NOT NULL, message TEXT NOT NULL, type VARCHAR(50) DEFAULT 'info', is_read BOOLEAN DEFAULT FALSE, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE)",
-    "CREATE TABLE IF NOT EXISTS reset_codes (id INT AUTO_INCREMENT PRIMARY KEY, email VARCHAR(255) NOT NULL, code VARCHAR(10) NOT NULL, method ENUM('email','sms') NOT NULL, expires_at TIMESTAMP NOT NULL, used BOOLEAN DEFAULT FALSE)";
+    "CREATE TABLE IF NOT EXISTS reset_codes (id INT AUTO_INCREMENT PRIMARY KEY, email VARCHAR(255) NOT NULL, code VARCHAR(10) NOT NULL, method ENUM('email','sms') NOT NULL, expires_at TIMESTAMP NOT NULL, used BOOLEAN DEFAULT FALSE)"
 ];
 
 foreach ($ddl as $sql) {
